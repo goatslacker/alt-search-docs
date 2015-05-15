@@ -36,7 +36,10 @@ class SearchResults extends React.Component {
         {this.props.results.map((result, i) => {
           return (
             <div key={i}>
-              <strong>{result.ref}</strong>
+              <h2>{result.title}</h2>
+              <h3>{result.description}</h3>
+              <h5>{result.permalink}</h5>
+              <hr />
             </div>
           )
         })}

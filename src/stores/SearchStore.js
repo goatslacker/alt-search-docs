@@ -20,6 +20,7 @@ class SearchStore {
 //    console.log('@@@@@@@@@@@@', module.hot)
     this.index = null
     this.results = []
+    this.documents = {}
 
     // XXX load in from localforage first...
     // when teh async request comes back if its different than local storage
@@ -28,19 +29,31 @@ class SearchStore {
 
   @bind(SearchActions.receivedIndex)
   receivedIndex(json) {
-    this.index = lunr.Index.load(json)
+    console.info('@', json)
+    this.documents = json.docs.reduce((obj, doc) => {
+      obj[doc.id] = doc
+      return obj
+    }, {})
+    this.index = lunr.Index.load(json.index)
+//    console.info('+>', this.index)
   }
 
   @bind(SearchActions.noIndexFound)
   failedLoadingIndex(err) {
-    console.log('Uh oh', err)
+    console.info('Uh oh', err)
     // throw an error?
   }
 
   @bind(SearchActions.search)
   search(text = '') {
-    this.results = this.index.search(text)
-    console.log(this.results)
+    this.results = text ? this.doSearch(text) : []
+    console.info(this.results)
+  }
+
+  doSearch(text) {
+    return this.index.search(text).map((result) => {
+      return this.documents[result.ref]
+    })
   }
 }
 
