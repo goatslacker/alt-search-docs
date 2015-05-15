@@ -14,5 +14,8 @@
     "es6"
   ],
   "author": "Josh Perez <josh@goatslacker.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lunr": "^0.5.9"
+  }
 }

@@ -16,12 +16,14 @@ class SearchStore {
 
   @bind(SearchActions.receivedIndex)
   receivedIndex(json) {
+    console.log('@', json)
     // if remote === local then do nothing
     // otherwise update in store and in localstorage
   }
 
   @bind(SearchActions.noIndexFound)
-  failedLoadingIndex() {
+  failedLoadingIndex(err) {
+    console.log('Uh oh', err)
     // throw an error?
   }
 }

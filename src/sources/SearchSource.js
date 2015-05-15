@@ -4,6 +4,7 @@ import SearchActions from '../actions/SearchActions'
 export default {
   loadIndex: {
     remote(state) {
+      console.log('Now loading')
       return axios('/search.json')
     },
 
