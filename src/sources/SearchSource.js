@@ -5,8 +5,7 @@ export default {
   loadIndex() {
     return {
       remote(state) {
-        console.log('Now loading')
-        return axios('/search.json')
+        return axios.get('/search.json').then(req => req.data)
       },
 
       success: SearchActions.receivedIndex,
