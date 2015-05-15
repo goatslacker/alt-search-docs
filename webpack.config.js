@@ -1,14 +1,30 @@
+var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src',
+  devtool: 'eval',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './src'
+  ],
   output: {
-    filename: 'dist/index.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'index.js',
+    publicPath: '/dist/'
   },
-
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  resolve: {
+    extensions: ['', '.js']
+  },
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?stage=0' }
-    ]
+    loaders: [{
+      test: /\.js$/,
+      include: path.join(__dirname, 'src'),
+      loaders: ['react-hot', 'babel-loader?stage=0']
+    }]
   }
 }

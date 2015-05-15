@@ -2,13 +2,32 @@ import React from 'react'
 import AltContainer from 'alt/AltContainer'
 import SearchStore from '../stores/SearchStore'
 
+class SearchBox extends React.Component {
+  constructor() {
+    super()
+
+    this.state = { value: '' }
+  }
+
+  componentDidUpdate() {
+    // fire search action
+    console.log('@@@@@@@', this.state.value)
+  }
+
+  render() {
+    return (
+      <input
+        type="text"
+        value={this.state.value}
+        onChange={(ev) => this.setState({ value: ev.target.value })}
+      />
+    )
+  }
+}
+
 // XXX use autobind decorator?
 
 class SearchView extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     SearchStore.listen((state) => {
       console.log('@', state)
@@ -20,7 +39,7 @@ class SearchView extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" />
+        <SearchBox />
       </div>
     )
   }
