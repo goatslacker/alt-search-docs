@@ -17,14 +17,8 @@ class SearchStore {
   }
 
   constructor() {
-    this.index = lunr(function () {
-      this.field('title', { boost: 10 })
-      this.field('description', { boost: 5 })
-      this.field('body')
-      this.field('layout')
-      this.field('permalink')
-    })
-
+//    console.log('@@@@@@@@@@@@', module.hot)
+    this.index = null
     this.results = []
 
     // XXX load in from localforage first...
@@ -34,8 +28,7 @@ class SearchStore {
 
   @bind(SearchActions.receivedIndex)
   receivedIndex(json) {
-    console.log(this.index)
-    this.index.load(json)
+    this.index = lunr.Index.load(json)
   }
 
   @bind(SearchActions.noIndexFound)
@@ -47,6 +40,7 @@ class SearchStore {
   @bind(SearchActions.search)
   search(text = '') {
     this.results = this.index.search(text)
+    console.log(this.results)
   }
 }
 

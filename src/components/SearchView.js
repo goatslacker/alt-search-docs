@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import AltContainer from 'alt/AltContainer'
 import SearchStore from '../stores/SearchStore'
+import SearchActions from '../actions/SearchActions'
 
 class SearchBox extends React.Component {
   constructor() {
@@ -10,8 +11,7 @@ class SearchBox extends React.Component {
   }
 
   componentDidUpdate() {
-    // fire search action
-    console.log('@@@@@@@', this.state.value)
+    SearchActions.search(this.state.value)
   }
 
   render() {
@@ -25,7 +25,25 @@ class SearchBox extends React.Component {
   }
 }
 
-// XXX use autobind decorator?
+class SearchResults extends React.Component {
+  static propTypes = {
+    results: PropTypes.array.isRequired
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.results.map((result, i) => {
+          return (
+            <div key={i}>
+              <strong>{result.ref}</strong>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+}
 
 class SearchView extends React.Component {
   componentWillMount() {
@@ -40,6 +58,9 @@ class SearchView extends React.Component {
     return (
       <div>
         <SearchBox />
+        <AltContainer store={SearchStore}>
+          <SearchResults />
+        </AltContainer>
       </div>
     )
   }
