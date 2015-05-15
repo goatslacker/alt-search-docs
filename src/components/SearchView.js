@@ -25,6 +25,8 @@ class SearchBox extends React.Component {
   }
 }
 
+// XXX include css styles with this component using webpack
+// or maybe inline them in JS, idk.
 class SearchResults extends React.Component {
   static propTypes = {
     results: PropTypes.array.isRequired
@@ -35,8 +37,10 @@ class SearchResults extends React.Component {
       <div>
         {this.props.results.map((result, i) => {
           return (
-            <div key={i}>
-              <h2>{result.title}</h2>
+            <div key={i} className="alt-search-result">
+              <h2>
+                <a href={result.permalink}>{result.title}</a>
+              </h2>
               <h3>{result.description}</h3>
               <h5>{result.permalink}</h5>
               <hr />

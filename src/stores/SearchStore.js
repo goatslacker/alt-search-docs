@@ -51,6 +51,9 @@ class SearchStore {
   }
 
   doSearch(text) {
+    // XXX it would be cool if this returned the proper template
+    // maybe I can include body and we can include highlight words/context
+    // or maybe it's react's job to highlight things and include context?
     return this.index.search(text).map((result) => {
       return this.documents[result.ref]
     })
