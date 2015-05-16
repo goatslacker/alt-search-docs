@@ -7,7 +7,7 @@ import SearchResults from './SearchResults'
 
 class SearchView extends React.Component {
   componentDidMount() {
-    SearchStore.loadIndex()
+    SearchStore.loadIndex(this.props.url)
   }
 
   render() {

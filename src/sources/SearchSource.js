@@ -2,10 +2,10 @@ import axios from 'axios'
 import SearchActions from '../actions/SearchActions'
 
 export default {
-  loadIndex() {
+  loadIndex(url) {
     return {
-      remote(state) {
-        return axios.get('/search.json').then(req => req.data)
+      remote(state, url) {
+        return axios.get(url).then(req => req.data)
       },
 
       success: SearchActions.receivedIndex,
