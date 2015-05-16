@@ -1,9 +1,11 @@
+import lunr from 'lunr'
+
 import alt from '../alt'
 import { decorate, datasource, bind } from 'alt/utils/decorators'
 import SearchSource from '../sources/SearchSource'
 import SearchActions from '../actions/SearchActions'
+import marked from '../utils/marked'
 
-import lunr from 'lunr'
 
 @decorate(alt)
 @datasource(SearchSource)
@@ -19,6 +21,7 @@ class SearchStore {
   constructor() {
 //    console.log('@@@@@@@@@@@@', module.hot)
     this.index = null
+    this.searchTerm = ''
     this.results = []
     this.documents = {}
 
@@ -32,6 +35,9 @@ class SearchStore {
     console.info('@', json)
     this.documents = json.docs.reduce((obj, doc) => {
       obj[doc.id] = doc
+      doc.tokens = marked.lexer(doc.body).filter((tokens) => {
+        return tokens.type === 'paragraph'
+      })
       return obj
     }, {})
     this.index = lunr.Index.load(json.index)
@@ -47,16 +53,14 @@ class SearchStore {
   @bind(SearchActions.search)
   search(text = '') {
     this.results = text ? this.doSearch(text) : []
-    console.info(this.results)
+    this.searchTerm = text
   }
 
   doSearch(text) {
-    // XXX it would be cool if this returned the proper template
-    // maybe I can include body and we can include highlight words/context
-    // or maybe it's react's job to highlight things and include context?
+    // Search and return the top 10 documents
     return this.index.search(text).map((result) => {
       return this.documents[result.ref]
-    })
+    }).slice(0, 10)
   }
 }
 
