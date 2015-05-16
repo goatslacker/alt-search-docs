@@ -4,7 +4,13 @@ class SearchActions {
   static displayName = 'SearchActions'
 
   constructor() {
-    this.generateActions('receivedIndex', 'noIndexFound', 'search')
+    this.generateActions(
+      'go',
+      'noIndexFound',
+      'receivedIndex',
+      'search',
+      'select'
+    )
   }
 }
 

@@ -11,6 +11,10 @@
   width: 400px;
 }
 
+.alt-search__result.selected {
+  background: #e0e0e0;
+}
+
 .alt-search__result-title {
   margin: 0;
   margin-bottom: 0.5em;

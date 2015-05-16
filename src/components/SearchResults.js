@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import TextHighlight from './TextHighlight'
+import classnames from 'classnames'
 
 class SearchResults extends React.Component {
   static propTypes = {
@@ -11,8 +12,13 @@ class SearchResults extends React.Component {
     return (
       <div className="alt-search__results">
         {this.props.results.map((result, i) => {
+          const classes = classnames({
+            'alt-search__result': true,
+            'selected': result.selected
+          })
+
           return (
-            <div key={i} className="alt-search__result">
+            <div key={i} className={classes}>
               <h3 className="alt-search__result-title">
                 <a href={result.permalink}>
                   <TextHighlight
