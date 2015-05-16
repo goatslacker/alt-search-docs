@@ -7,8 +7,8 @@ import stringScore from '../utils/stringScore'
 const MAX_CHAR_SUMMARY = 240
 
 @decorate(alt)
-class SearchResultsStore {
-  static displayName = 'SearchResultsStore'
+class ResultsStore {
+  static displayName = 'ResultsStore'
 
   constructor() {
     this.searchTerm = ''
@@ -86,4 +86,4 @@ class SearchResultsStore {
   }
 }
 
-export default alt.createStore(SearchResultsStore)
+export default alt.createStore(ResultsStore)
