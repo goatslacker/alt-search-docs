@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import TextHighlight from './TextHighlight'
+import TextHighlight from 'react-text-highlight'
 import classnames from 'classnames'
 
 class SearchResults extends React.Component {

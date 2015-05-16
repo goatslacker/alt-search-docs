@@ -25,10 +25,12 @@ module.exports = {
       test: /\.js$/,
       include: [
         path.join(__dirname, 'src'),
-        // XXX re-enable this when we add CSS transform
-//        path.join(__dirname, 'node_modules', 'react-text-highlight', 'src')
+        path.join(__dirname, 'node_modules', 'react-text-highlight', 'src')
       ],
       loaders: ['react-hot', 'babel-loader?stage=0']
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader'
     }]
   }
 }
