@@ -93,7 +93,7 @@ function score(string, word, fuzziness) {
   }
 
   // Reduce penalty for longer strings.
-  finalScore = 0.5 * (runningScore / strLength    + runningScore / wordLength) / fuzzies;
+  finalScore = 0.5 * (runningScore / strLength + runningScore / wordLength) / fuzzies;
 
   if ((lWord[0] === lString[0]) && (finalScore < 0.85)) {
     finalScore += 0.15;
