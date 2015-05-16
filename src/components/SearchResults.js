@@ -17,10 +17,8 @@ class SearchResults extends React.Component {
                 <a href={result.permalink}>
                   <TextHighlight
                     highlight={this.props.searchTerm}
-                    text={result.description}
+                    text={`${result.description} - ${result.title}`}
                   />
-                  {' - '}
-                  {result.title}
                 </a>
               </h3>
               <p className="alt-search__result-snippet">
