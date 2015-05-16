@@ -1,0 +1,41 @@
+.alt-search__input {
+  border: 1px solid #cacaca;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  width: 400px;
+}
+
+.alt-search__results {
+  margin: 1em 0;
+  width: 400px;
+}
+
+.alt-search__result-title {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.alt-search__result-title mark { }
+
+.alt-search__result-snippet {
+  margin: 0;
+  margin-bottom: 0.25em;
+}
+
+.alt-search__result-snippet mark {
+  background: inherit;
+  font-weight: bold;
+}
+
+.alt-search__result-link {
+  color: #888;
+  font-weight: normal;
+  margin: 0;
+}
+
+hr {
+  background: #efefef;
+  border: none;
+  height: 1px;
+}

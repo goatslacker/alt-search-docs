@@ -12,7 +12,7 @@ class SearchView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="alt-search">
         <SearchBox />
         <AltContainer store={SearchResultsStore}>
           <SearchResults />

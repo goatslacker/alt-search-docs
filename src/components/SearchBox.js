@@ -15,6 +15,7 @@ class SearchBox extends React.Component {
   render() {
     return (
       <input
+        className="alt-search__input"
         type="text"
         value={this.state.value}
         onChange={(ev) => this.setState({ value: ev.target.value })}

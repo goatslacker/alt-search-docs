@@ -9,11 +9,11 @@ class SearchResults extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="alt-search__results">
         {this.props.results.map((result, i) => {
           return (
-            <div key={i} className="alt-search-result">
-              <h3>
+            <div key={i} className="alt-search__result">
+              <h3 className="alt-search__result-title">
                 <a href={result.permalink}>
                   <TextHighlight
                     highlight={this.props.searchTerm}
@@ -23,13 +23,13 @@ class SearchResults extends React.Component {
                   {result.title}
                 </a>
               </h3>
-              <p>
+              <p className="alt-search__result-snippet">
                 <TextHighlight
                   highlight={this.props.searchTerm}
                   text={result.snippet}
                 />
               </p>
-              <h5>{result.permalink}</h5>
+              <h5 className="alt-search__result-link">{result.permalink}</h5>
               <hr />
             </div>
           )
