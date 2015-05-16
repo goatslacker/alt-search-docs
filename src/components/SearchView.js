@@ -1,6 +1,7 @@
 import React from 'react'
 import AltContainer from 'alt/AltContainer'
 import SearchStore from '../stores/SearchStore'
+import SearchResultsStore from '../stores/SearchResultsStore'
 import SearchBox from './SearchBox'
 import SearchResults from './SearchResults'
 
@@ -13,7 +14,7 @@ class SearchView extends React.Component {
     return (
       <div>
         <SearchBox />
-        <AltContainer store={SearchStore}>
+        <AltContainer store={SearchResultsStore}>
           <SearchResults />
         </AltContainer>
       </div>

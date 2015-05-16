@@ -1,24 +1,10 @@
 import React, { PropTypes } from 'react'
 import TextHighlight from './TextHighlight'
 
-import stringScore from '../utils/stringScore'
-
 class SearchResults extends React.Component {
   static propTypes = {
     searchTerm: PropTypes.string.isRequired,
     results: PropTypes.array.isRequired
-  }
-
-  findText(tokens, text) {
-    const items = tokens.map((token) => {
-      return { score: stringScore(token.text, text), text: token.text }
-    }).filter((obj) => {
-      return obj.score > 0
-    }).sort((a, b) => {
-      return a.score < b.score ? 1 : -1
-    })
-
-    return items.length ? items[0].text.slice(0, 240) : ''
   }
 
   render() {
@@ -40,7 +26,7 @@ class SearchResults extends React.Component {
               <p>
                 <TextHighlight
                   highlight={this.props.searchTerm}
-                  text={this.findText(result.tokens, this.props.searchTerm)}
+                  text={result.snippet}
                 />
               </p>
               <h5>{result.permalink}</h5>

@@ -13,6 +13,7 @@ class SearchStore {
   static displayName = 'SearchStore'
 
   static config = {
+    // XXX
     onSerialize(state) {
       return state.index.toJSON()
     }
@@ -20,14 +21,11 @@ class SearchStore {
 
   constructor() {
 //    console.log('@@@@@@@@@@@@', module.hot)
-    this.index = null
-    this.searchTerm = ''
-    this.results = []
-    this.documents = {}
-
     // XXX load in from localforage first...
     // when teh async request comes back if its different than local storage
     // then load it in otherwise return false.
+    this.index = null
+    this.documents = []
   }
 
   @bind(SearchActions.receivedIndex)
@@ -50,18 +48,18 @@ class SearchStore {
     // throw an error?
   }
 
-  @bind(SearchActions.search)
-  search(text = '') {
-    this.results = text ? this.doSearch(text) : []
-    this.searchTerm = text
-  }
+//  @bind(SearchActions.search)
+//  search(text = '') {
+//    this.results = text ? this.doSearch(text) : []
+//    this.searchTerm = text
+//  }
 
-  doSearch(text) {
+//  doSearch(text) {
     // Search and return the top 10 documents
-    return this.index.search(text).map((result) => {
-      return this.documents[result.ref]
-    }).slice(0, 10)
-  }
+//    return this.index.search(text).map((result) => {
+//      return this.documents[result.ref]
+//    }).slice(0, 10)
+//  }
 }
 
 export default alt.createStore(SearchStore)
