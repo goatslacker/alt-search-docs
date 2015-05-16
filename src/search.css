@@ -11,29 +11,43 @@
   width: 400px;
 }
 
+.alt-search__result {
+  padding: 0 1em;
+}
+
 .alt-search__result.selected {
   background: #e0e0e0;
 }
 
 .alt-search__result-title {
+  font-size: 1em;
+  line-height: 1em;
+  margin-bottom: 0.25em;
   margin: 0;
-  margin-bottom: 0.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .alt-search__result-title mark { }
 
 .alt-search__result-snippet {
-  margin: 0;
+  color: #666;
+  font-size: 0.8em;
+  line-height: 1.15em;
   margin-bottom: 0.25em;
+  margin: 0;
 }
 
 .alt-search__result-snippet mark {
   background: inherit;
+  color: #666;
   font-weight: bold;
 }
 
 .alt-search__result-link {
   color: #888;
+  font-size: 0.65em;
   font-weight: normal;
   margin: 0;
 }
@@ -42,4 +56,6 @@ hr {
   background: #efefef;
   border: none;
   height: 1px;
+  margin: 0.5em 0;
+  width: 100%;
 }
