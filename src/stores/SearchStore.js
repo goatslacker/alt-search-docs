@@ -18,7 +18,6 @@ class SearchStore {
 
   @bind(SearchActions.receivedIndex)
   receivedIndex(json) {
-    console.info('@', json)
     this.documents = json.docs.reduce((obj, doc) => {
       obj[doc.id] = doc
       doc.tokens = marked.lexer(doc.body).filter((tokens) => {
