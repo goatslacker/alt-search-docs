@@ -28,6 +28,7 @@ class SearchBox extends React.Component {
     return (
       <input
         className="alt-search__input"
+        placeholder="Search Docs"
         type="text"
         value={this.state.value}
         onKeyDown={(ev) => this.parseKeyCode(ev)}
