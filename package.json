@@ -1,6 +1,6 @@
 {
   "name": "alt-search-docs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A search application to look through Alt's docs",
   "main": "src/index.js",
   "scripts": {
