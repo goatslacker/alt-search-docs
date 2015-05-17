@@ -34,7 +34,6 @@ class SearchResults extends React.Component {
                 />
               </p>
               <h5 className="alt-search__result-link">{result.permalink}</h5>
-              <hr />
             </div>
           )
         })}
