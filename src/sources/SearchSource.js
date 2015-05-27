@@ -5,7 +5,7 @@ export default {
   loadIndex(url) {
     return {
       remote(state, url) {
-        return axios.get(url).then(req => req.data)
+        return axios.get(url).then(res => res.data)
       },
 
       success: SearchActions.receivedIndex,
